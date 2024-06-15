@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
+const password = process.env.PASSWORD;
 
 //Define the schema of the document i want to read
 const UserSchema = mongoose.Schema({
@@ -24,7 +27,7 @@ const Note = new mongoose.model('Notes', NotesSchema);
 async function main() {
   console.log('connecting');
   await mongoose.connect(
-    'mongodb+srv://emi:Ferrari77Emi77!@cluster0.wvmqc9u.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=Cluster0'
+    `mongodb+srv://emi:${password}@cluster0.wvmqc9u.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=Cluster0`
   );
   console.log('connected');
   return 'connected to db';
@@ -43,7 +46,7 @@ main()
     //create user
     const newUser = new User({
       name: 'emi',
-      email: 'emi@emi2.com',
+      email: 'emi@emi3.com',
       password: 'eee',
     });
     await newUser.save();
