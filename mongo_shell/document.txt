@@ -1,0 +1,26 @@
+useful information how to connect to mongo using the shell.
+
+show dbs
+use <database name>
+show collections
+db.<collection name>.findOne();
+db.<collection name>.findOne({"name":"hello"}); // return first document
+db.<collection name>.find({"name":"hello"}); // returns array of objects
+
+iterator
+it // to iterate in the console log
+
+operators
+$gt //means greater then {"salary":{$gt:200000}}
+$gte //means greater then or equal too {"salary":{$gte:200000}}
+$lt // means less then {"field name":{operator:"value"}}
+$lte // means less then or equal to
+$eq // equal to
+$in // means in , used for arrays  {"salary":{$in:[200000, 400000]}} salary of 200k or 400k
+$nin // means not in
+
+logical operators
+$and // db.movies.find({$and:[{year:1933}, {title:"Duck Soup"}]}) || db.movies.find({$and:[{year:{$gt:1932}}, {title:"Duck Soup"}]})
+$or
+$nor
+$not
