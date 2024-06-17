@@ -20,8 +20,19 @@ $in // means in , used for arrays  {"salary":{$in:[200000, 400000]}} salary of 2
 $nin // means not in
 
 logical operators
-// db.movies.find({$and:[{year:1933}, {title:"Duck Soup"}]}) || db.movies.find({$and:[{year:{$gt:1932}}, {title:"Duck Soup"}]})
-// db.movies.find({year:{$gt:1932}, title:"Duck Soup"}) this implicitly applies the $and operator
+db.movies.find({$and:[{year:1933}, {title:"Duck Soup"}]}) || db.movies.find({$and:[{year:{$gt:1932}}, {title:"Duck Soup"}]})
+db.movies.find({year:{$gt:1932}, title:"Duck Soup"}) this implicitly applies the $and operator
+db.movies.find({
+  $and: [
+    { year: { $gt: 1932 } },
+    { year: { $lt: 1950 } }
+  ]
+});
+or this can be simplified doing 
+db.movies.find({
+  year: { $gt: 1932, $lt: 1950 }
+});
+
 $and 
 
 //or
